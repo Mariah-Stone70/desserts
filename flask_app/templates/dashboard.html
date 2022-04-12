@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/dashboard.css')}}">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1 id="site_name" >Welcome to Sweet Tooth {{user.first_name}}!!!</h1> <img id="pic" src="{{ url_for('static', filename='cupcake.jpg') }}">
+    <h2 id="title" >Check out these delicious dessert recipes!</h2>
+    {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+        {% if messages %}                            <!-- check if there are any messages -->
+            {% for message in messages %}            <!-- loop through the messages -->
+                <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Under 30 Minutes?</th>
+            <th>Actions</th>
+        </tr>
+        {% for recipe in recipes %}
+            <tr>
+                <td> <a href="/recipes/{{recipe.id}}">{{recipe.name}}</a> </td>
+                <td>{{recipe.under_thirty}}</td>
+                <td>
+                    {% if session.user_id == recipe.user_id %}
+                    <a href="/recipes/{{recipe.id}}/edit">Edit</a>
+                    <a href="/recipes/{{recipe.id}}/delete">Delete</a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+<p>
+    <a href="/recipes/new">Create</a>
+</p>
+<p>
+    <a href="/logout">Logout</a>
+</p>
+</body>
+</html>

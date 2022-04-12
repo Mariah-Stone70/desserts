@@ -1,0 +1,29 @@
+html, body{
+    background-color: lightblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1{
+    color: rgb(206, 60, 84);
+}
+
+
+label, input{
+    align-items: center;
+    flex-direction: column;
+}
+
+#reg, login{
+    justify-content: space-around;
+}
+
+.reg_info, login_info{
+    flex-wrap: wrap;
+}
+
+#pic{
+    height: 25px;
+}

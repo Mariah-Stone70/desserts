@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/delete.css')}}">
+    <title>Create New</title>
+</head>
+<body>
+    <h1 id="site_name" >Sweet Tooth</h1> <img id="pic" src="{{ url_for('static', filename='cupcake.jpg') }}">
+    <h2 id="delete" >Are you sure you want to delete your mouth-watering {{recipe.name}} recipe ?</h2>
+    <form action="/recipes/{{recipe.id}}/destroy" method="post">
+        <input name="id" type="hidden" value="{{recipe.id}}">
+        <button type="submit"> Delete</button>
+    </form>
+    <div>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/logout">Logout</a>
+    </div>
+</body>
+</html>

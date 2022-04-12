@@ -1,0 +1,16 @@
+html, body{
+    background-color: lightblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1{
+    color: rgb(206, 60, 84);
+}
+
+#pic{
+    height: 25px;
+}
+

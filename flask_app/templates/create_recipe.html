@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/create.css')}}">
+    <title>Create New</title>
+</head>
+<body>
+    <h1 id="site_name" >Sweet Tooth</h1> <img id="pic" src="{{ url_for('static', filename='cupcake.jpg') }}">
+    <h2 id="add" >Add a New Delicious Recipe</h2>
+    {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+        {% if messages %}                            <!-- check if there are any messages -->
+            {% for message in messages %}            <!-- loop through the messages -->
+                <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <form action="/recipes/new/create" method="POST">
+        <p>Name: <input name="name" type="text"></p>
+        <p>Description:</p> <textarea name="description" placeholder="Write a description"></textarea>
+        <p>Instructions:  </p><textarea name="instruction" placeholder="Give detailed instructions"></textarea>
+        <p>Date Made On: </p><input name="date_made" type="date">
+        <p>Under 30 Minutes? </p>
+            <div>
+                <input type="radio" name="under_thirty" value="0">
+                <label for="0">No</label>
+            </div>
+            <div>
+                <input type="radio" name="under_thirty" value="1">
+                <label for="1">Yes</label>
+            </div>
+
+        <input type="submit" value="Add Recipe">
+    </form>
+    <div>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/logout">Logout</a>
+    </div>
+</body>
+</html>
